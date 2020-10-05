@@ -6,6 +6,8 @@ ruby File.read(".ruby-version").strip
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
+gem "puma"
+
 group :test do
   gem "rspec"
 end
