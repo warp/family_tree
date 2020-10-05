@@ -1,3 +1,5 @@
+require "dotenv"
+
 class Config
   class << self
     # Define a simple ENV var config attribute.  For example, if you call:
@@ -13,6 +15,12 @@ class Config
     def env_string(name, default: nil)
       value = value_from_env_var(name, default)
       create_config_method_from_env_var(name, value)
+    end
+
+    # As env_string but the value is cast to a boolean
+    def env_boolean(name, default: nil)
+      value = value_from_env_var(name, default)
+      create_config_method_from_env_var(name, value.to_s.match?(/true/i))
     end
 
     # As env_string but the value is cast to an integer
@@ -36,6 +44,15 @@ class Config
       send("#{method_name}=", value)
     end
   end
+
+  if ENV["RACK_ENV"] == "test"
+    Dotenv.load('.env.test')
+  else
+    Dotenv.load
+  end
+
+  env_string("HTTP_USERNAME")
+  env_string("HTTP_PASSWORD")
 
   env_integer('WEB_CONCURRENCY', default: 2)
   env_integer('MAX_THREADS', default: 5)
