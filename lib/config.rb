@@ -1,3 +1,5 @@
+require "dotenv"
+
 class Config
   class << self
     # Define a simple ENV var config attribute.  For example, if you call:
@@ -42,6 +44,15 @@ class Config
       send("#{method_name}=", value)
     end
   end
+
+  if ENV["RACK_ENV"] == "test"
+    Dotenv.load('.env.test')
+  else
+    Dotenv.load
+  end
+
+  env_string("HTTP_USERNAME")
+  env_string("HTTP_PASSWORD")
 
   env_integer('WEB_CONCURRENCY', default: 2)
   env_integer('MAX_THREADS', default: 5)
