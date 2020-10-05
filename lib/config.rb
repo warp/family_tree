@@ -15,6 +15,12 @@ class Config
       create_config_method_from_env_var(name, value)
     end
 
+    # As env_string but the value is cast to a boolean
+    def env_boolean(name, default: nil)
+      value = value_from_env_var(name, default)
+      create_config_method_from_env_var(name, value.to_s.match?(/true/i))
+    end
+
     # As env_string but the value is cast to an integer
     def env_integer(name, default: nil)
       value = value_from_env_var(name, default)
