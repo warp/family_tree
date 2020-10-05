@@ -1,11 +1,10 @@
-require 'rack/test'
-require 'routing'
+require "rack/test"
+require "routing"
 
 RSpec.shared_context 'Feature', :feature do
   include Rack::Test::Methods
 
-  let(:app) { rack_builder.run(Routing.build) }
-  let(:rack_builder) { Rack::Builder.new }
+  let(:app) { Rack::Builder.new.run(Routing.build) }
 end
 
 RSpec.configure do |rspec|
