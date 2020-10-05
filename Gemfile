@@ -10,5 +10,6 @@ gem "puma"
 gem "rack-cors"
 
 group :test do
+  gem "rack-test"
   gem "rspec"
 end

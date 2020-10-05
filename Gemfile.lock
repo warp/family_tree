@@ -8,6 +8,8 @@ GEM
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -28,6 +30,7 @@ PLATFORMS
 DEPENDENCIES
   puma
   rack-cors
+  rack-test
   rspec
 
 RUBY VERSION
