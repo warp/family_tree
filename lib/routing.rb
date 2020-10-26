@@ -1,4 +1,6 @@
-require "endpoint/four_oh_four"
+# frozen_string_literal: true
+
+require 'endpoint/four_oh_four'
 
 module Routing
   def build
