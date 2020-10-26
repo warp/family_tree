@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/config'
 
 workers Config.web_concurrency

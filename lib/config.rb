@@ -1,4 +1,6 @@
-require "dotenv"
+# frozen_string_literal: true
+
+require 'dotenv'
 
 class Config
   class << self
@@ -30,6 +32,7 @@ class Config
     end
 
     private
+
     def value_from_env_var(name, default)
       if default.nil?
         ENV.fetch(name)
@@ -45,14 +48,14 @@ class Config
     end
   end
 
-  if ENV["RACK_ENV"] == "test"
+  if ENV['RACK_ENV'] == 'test'
     Dotenv.load('.env.test')
   else
     Dotenv.load
   end
 
-  env_string("HTTP_USERNAME")
-  env_string("HTTP_PASSWORD")
+  env_string('HTTP_USERNAME', default: '')
+  env_string('HTTP_PASSWORD', default: '')
 
   env_integer('WEB_CONCURRENCY', default: 2)
   env_integer('MAX_THREADS', default: 5)

@@ -1,0 +1,22 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.1
+
+defaults: &defaults
+  docker:
+    - image: circleci/ruby:2.7.2-node
+  executor: ruby/default
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check
+      - ruby/rspec-test
+
+workflows:
+  build_and_test:
+    jobs:
+      - test
