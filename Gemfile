@@ -14,4 +14,5 @@ group :test do
   gem "pry-byebug"
   gem "rack-test"
   gem "rspec"
+  gem "rspec_junit_formatter"
 end

@@ -51,8 +51,8 @@ class Config
     Dotenv.load
   end
 
-  env_string("HTTP_USERNAME")
-  env_string("HTTP_PASSWORD")
+  env_string("HTTP_USERNAME", default: '')
+  env_string("HTTP_PASSWORD", default: '')
 
   env_integer('WEB_CONCURRENCY', default: 2)
   env_integer('MAX_THREADS', default: 5)
