@@ -13,6 +13,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - ruby/rubocop-check
       - ruby/rspec-test
 
 workflows:
